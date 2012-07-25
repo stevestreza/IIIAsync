@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1EF3E37615BFDD0500B2A404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37515BFDD0500B2A404 /* Foundation.framework */; };
-		1EF3E37B15BFDD0500B2A404 /* Concurrently.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EF3E37A15BFDD0500B2A404 /* Concurrently.h */; };
-		1EF3E37D15BFDD0500B2A404 /* Concurrently.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3E37C15BFDD0500B2A404 /* Concurrently.m */; };
+		1EF3E37B15BFDD0500B2A404 /* IIIAsync.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EF3E37A15BFDD0500B2A404 /* IIIAsync.h */; };
+		1EF3E37D15BFDD0500B2A404 /* IIIAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3E37C15BFDD0500B2A404 /* IIIAsync.m */; };
 		1EF3E38515BFDD0500B2A404 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */; };
 		1EF3E38715BFDD0500B2A404 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38615BFDD0500B2A404 /* UIKit.framework */; };
 		1EF3E38815BFDD0500B2A404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37515BFDD0500B2A404 /* Foundation.framework */; };
@@ -35,7 +35,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				1EF3E37B15BFDD0500B2A404 /* Concurrently.h in CopyFiles */,
+				1EF3E37B15BFDD0500B2A404 /* IIIAsync.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +45,8 @@
 		1EF3E37215BFDD0500B2A404 /* libConcurrently.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConcurrently.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF3E37515BFDD0500B2A404 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1EF3E37915BFDD0500B2A404 /* Concurrently-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Concurrently-Prefix.pch"; sourceTree = "<group>"; };
-		1EF3E37A15BFDD0500B2A404 /* Concurrently.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Concurrently.h; sourceTree = "<group>"; };
-		1EF3E37C15BFDD0500B2A404 /* Concurrently.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Concurrently.m; sourceTree = "<group>"; };
+		1EF3E37A15BFDD0500B2A404 /* IIIAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IIIAsync.h; sourceTree = "<group>"; };
+		1EF3E37C15BFDD0500B2A404 /* IIIAsync.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IIIAsync.m; sourceTree = "<group>"; };
 		1EF3E38315BFDD0500B2A404 /* ConcurrentlyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentlyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1EF3E38615BFDD0500B2A404 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -111,8 +111,8 @@
 		1EF3E37715BFDD0500B2A404 /* Concurrently */ = {
 			isa = PBXGroup;
 			children = (
-				1EF3E37A15BFDD0500B2A404 /* Concurrently.h */,
-				1EF3E37C15BFDD0500B2A404 /* Concurrently.m */,
+				1EF3E37A15BFDD0500B2A404 /* IIIAsync.h */,
+				1EF3E37C15BFDD0500B2A404 /* IIIAsync.m */,
 				1EF3E37815BFDD0500B2A404 /* Supporting Files */,
 			);
 			path = Concurrently;
@@ -243,7 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EF3E37D15BFDD0500B2A404 /* Concurrently.m in Sources */,
+				1EF3E37D15BFDD0500B2A404 /* IIIAsync.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
