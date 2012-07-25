@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1EF3E37615BFDD0500B2A404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37515BFDD0500B2A404 /* Foundation.framework */; };
+		1EF3E37B15BFDD0500B2A404 /* Concurrently.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EF3E37A15BFDD0500B2A404 /* Concurrently.h */; };
+		1EF3E37D15BFDD0500B2A404 /* Concurrently.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3E37C15BFDD0500B2A404 /* Concurrently.m */; };
+		1EF3E38515BFDD0500B2A404 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */; };
+		1EF3E38715BFDD0500B2A404 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38615BFDD0500B2A404 /* UIKit.framework */; };
+		1EF3E38815BFDD0500B2A404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37515BFDD0500B2A404 /* Foundation.framework */; };
+		1EF3E38B15BFDD0500B2A404 /* libConcurrently.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37215BFDD0500B2A404 /* libConcurrently.a */; };
+		1EF3E39115BFDD0500B2A404 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EF3E38F15BFDD0500B2A404 /* InfoPlist.strings */; };
+		1EF3E39415BFDD0500B2A404 /* ConcurrentlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3E39315BFDD0500B2A404 /* ConcurrentlyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1EF3E38915BFDD0500B2A404 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EF3E36915BFDD0500B2A404 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EF3E37115BFDD0500B2A404;
+			remoteInfo = Concurrently;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1EF3E37015BFDD0500B2A404 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				1EF3E37B15BFDD0500B2A404 /* Concurrently.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1EF3E37215BFDD0500B2A404 /* libConcurrently.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConcurrently.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF3E37515BFDD0500B2A404 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1EF3E37915BFDD0500B2A404 /* Concurrently-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Concurrently-Prefix.pch"; sourceTree = "<group>"; };
+		1EF3E37A15BFDD0500B2A404 /* Concurrently.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Concurrently.h; sourceTree = "<group>"; };
+		1EF3E37C15BFDD0500B2A404 /* Concurrently.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Concurrently.m; sourceTree = "<group>"; };
+		1EF3E38315BFDD0500B2A404 /* ConcurrentlyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentlyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1EF3E38615BFDD0500B2A404 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		1EF3E38E15BFDD0500B2A404 /* ConcurrentlyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConcurrentlyTests-Info.plist"; sourceTree = "<group>"; };
+		1EF3E39015BFDD0500B2A404 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1EF3E39215BFDD0500B2A404 /* ConcurrentlyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcurrentlyTests.h; sourceTree = "<group>"; };
+		1EF3E39315BFDD0500B2A404 /* ConcurrentlyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcurrentlyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1EF3E36F15BFDD0500B2A404 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EF3E37615BFDD0500B2A404 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EF3E37F15BFDD0500B2A404 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EF3E38515BFDD0500B2A404 /* SenTestingKit.framework in Frameworks */,
+				1EF3E38715BFDD0500B2A404 /* UIKit.framework in Frameworks */,
+				1EF3E38815BFDD0500B2A404 /* Foundation.framework in Frameworks */,
+				1EF3E38B15BFDD0500B2A404 /* libConcurrently.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EF3E36715BFDD0500B2A404 = {
+			isa = PBXGroup;
+			children = (
+				1EF3E37715BFDD0500B2A404 /* Concurrently */,
+				1EF3E38C15BFDD0500B2A404 /* ConcurrentlyTests */,
+				1EF3E37415BFDD0500B2A404 /* Frameworks */,
+				1EF3E37315BFDD0500B2A404 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1EF3E37315BFDD0500B2A404 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1EF3E37215BFDD0500B2A404 /* libConcurrently.a */,
+				1EF3E38315BFDD0500B2A404 /* ConcurrentlyTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1EF3E37415BFDD0500B2A404 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EF3E37515BFDD0500B2A404 /* Foundation.framework */,
+				1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */,
+				1EF3E38615BFDD0500B2A404 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1EF3E37715BFDD0500B2A404 /* Concurrently */ = {
+			isa = PBXGroup;
+			children = (
+				1EF3E37A15BFDD0500B2A404 /* Concurrently.h */,
+				1EF3E37C15BFDD0500B2A404 /* Concurrently.m */,
+				1EF3E37815BFDD0500B2A404 /* Supporting Files */,
+			);
+			path = Concurrently;
+			sourceTree = "<group>";
+		};
+		1EF3E37815BFDD0500B2A404 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1EF3E37915BFDD0500B2A404 /* Concurrently-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1EF3E38C15BFDD0500B2A404 /* ConcurrentlyTests */ = {
+			isa = PBXGroup;
+			children = (
+				1EF3E39215BFDD0500B2A404 /* ConcurrentlyTests.h */,
+				1EF3E39315BFDD0500B2A404 /* ConcurrentlyTests.m */,
+				1EF3E38D15BFDD0500B2A404 /* Supporting Files */,
+			);
+			path = ConcurrentlyTests;
+			sourceTree = "<group>";
+		};
+		1EF3E38D15BFDD0500B2A404 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1EF3E38E15BFDD0500B2A404 /* ConcurrentlyTests-Info.plist */,
+				1EF3E38F15BFDD0500B2A404 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1EF3E37115BFDD0500B2A404 /* Concurrently */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EF3E39715BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "Concurrently" */;
+			buildPhases = (
+				1EF3E36E15BFDD0500B2A404 /* Sources */,
+				1EF3E36F15BFDD0500B2A404 /* Frameworks */,
+				1EF3E37015BFDD0500B2A404 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Concurrently;
+			productName = Concurrently;
+			productReference = 1EF3E37215BFDD0500B2A404 /* libConcurrently.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1EF3E38215BFDD0500B2A404 /* ConcurrentlyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EF3E39A15BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "ConcurrentlyTests" */;
+			buildPhases = (
+				1EF3E37E15BFDD0500B2A404 /* Sources */,
+				1EF3E37F15BFDD0500B2A404 /* Frameworks */,
+				1EF3E38015BFDD0500B2A404 /* Resources */,
+				1EF3E38115BFDD0500B2A404 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EF3E38A15BFDD0500B2A404 /* PBXTargetDependency */,
+			);
+			name = ConcurrentlyTests;
+			productName = ConcurrentlyTests;
+			productReference = 1EF3E38315BFDD0500B2A404 /* ConcurrentlyTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1EF3E36915BFDD0500B2A404 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Mustacheware;
+			};
+			buildConfigurationList = 1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "Concurrently" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1EF3E36715BFDD0500B2A404;
+			productRefGroup = 1EF3E37315BFDD0500B2A404 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1EF3E37115BFDD0500B2A404 /* Concurrently */,
+				1EF3E38215BFDD0500B2A404 /* ConcurrentlyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1EF3E38015BFDD0500B2A404 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EF3E39115BFDD0500B2A404 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EF3E38115BFDD0500B2A404 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1EF3E36E15BFDD0500B2A404 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EF3E37D15BFDD0500B2A404 /* Concurrently.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EF3E37E15BFDD0500B2A404 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EF3E39415BFDD0500B2A404 /* ConcurrentlyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1EF3E38A15BFDD0500B2A404 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EF3E37115BFDD0500B2A404 /* Concurrently */;
+			targetProxy = 1EF3E38915BFDD0500B2A404 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1EF3E38F15BFDD0500B2A404 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EF3E39015BFDD0500B2A404 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1EF3E39515BFDD0500B2A404 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1EF3E39615BFDD0500B2A404 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1EF3E39815BFDD0500B2A404 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Concurrently.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1EF3E39915BFDD0500B2A404 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Concurrently.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		1EF3E39B15BFDD0500B2A404 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
+				INFOPLIST_FILE = "ConcurrentlyTests/ConcurrentlyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1EF3E39C15BFDD0500B2A404 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
+				INFOPLIST_FILE = "ConcurrentlyTests/ConcurrentlyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "Concurrently" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EF3E39515BFDD0500B2A404 /* Debug */,
+				1EF3E39615BFDD0500B2A404 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EF3E39715BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "Concurrently" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EF3E39815BFDD0500B2A404 /* Debug */,
+				1EF3E39915BFDD0500B2A404 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1EF3E39A15BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "ConcurrentlyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EF3E39B15BFDD0500B2A404 /* Debug */,
+				1EF3E39C15BFDD0500B2A404 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1EF3E36915BFDD0500B2A404 /* Project object */;
+}
