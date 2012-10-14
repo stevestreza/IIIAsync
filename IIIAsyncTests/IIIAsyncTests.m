@@ -1,6 +1,6 @@
 //
-//  ConcurrentlyTests.m
-//  ConcurrentlyTests
+//  IIIAsyncTests.m
+//  IIIAsync
 //
 //  Created by Steve Streza on 7/25/12.
 //  Copyright (c) 2012 Mustacheware. All rights reserved.
@@ -9,7 +9,7 @@
 #import "ConcurrentlyTests.h"
 #import "IIIAsync.h"
 
-@implementation ConcurrentlyTests{
+@implementation IIIAsyncTests{
 	NSDate *triggerStart;
 	BOOL trigger;
 }
@@ -173,6 +173,24 @@
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		[self trigger];
 	}];
+	[self waitForTrigger];
+}
+
+-(void)testRunConditionals{
+	IIIAsync *async = [IIIAsync backgroundThreadAsync];
+	NSDate *startDate = [NSDate date];
+	__block NSInteger remaining = 10000000;
+	__block NSInteger count = 0;
+	[async runWhileTrue:^BOOL{
+		return --remaining >= 0;
+	} performBlock:^(IIIAsyncCallback callback) {
+		++count;
+		callback(nil, nil);
+	} callback:^(id result, NSError *error) {
+		NSLog(@"Whee count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
+		[self trigger];
+	}];
+	
 	[self waitForTrigger];
 }
 

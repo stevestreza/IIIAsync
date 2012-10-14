@@ -13,9 +13,9 @@
 		1EF3E38515BFDD0500B2A404 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */; };
 		1EF3E38715BFDD0500B2A404 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38615BFDD0500B2A404 /* UIKit.framework */; };
 		1EF3E38815BFDD0500B2A404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37515BFDD0500B2A404 /* Foundation.framework */; };
-		1EF3E38B15BFDD0500B2A404 /* libConcurrently.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37215BFDD0500B2A404 /* libConcurrently.a */; };
+		1EF3E38B15BFDD0500B2A404 /* libIIIAsync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37215BFDD0500B2A404 /* libIIIAsync.a */; };
 		1EF3E39115BFDD0500B2A404 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EF3E38F15BFDD0500B2A404 /* InfoPlist.strings */; };
-		1EF3E39415BFDD0500B2A404 /* ConcurrentlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3E39315BFDD0500B2A404 /* ConcurrentlyTests.m */; };
+		1EF3E39415BFDD0500B2A404 /* IIIAsyncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3E39315BFDD0500B2A404 /* IIIAsyncTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,18 +42,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1EF3E37215BFDD0500B2A404 /* libConcurrently.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConcurrently.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF3E37215BFDD0500B2A404 /* libIIIAsync.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIIIAsync.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF3E37515BFDD0500B2A404 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1EF3E37915BFDD0500B2A404 /* Concurrently-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Concurrently-Prefix.pch"; sourceTree = "<group>"; };
+		1EF3E37915BFDD0500B2A404 /* IIIAsync-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IIIAsync-Prefix.pch"; sourceTree = "<group>"; };
 		1EF3E37A15BFDD0500B2A404 /* IIIAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IIIAsync.h; sourceTree = "<group>"; };
 		1EF3E37C15BFDD0500B2A404 /* IIIAsync.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IIIAsync.m; sourceTree = "<group>"; };
-		1EF3E38315BFDD0500B2A404 /* ConcurrentlyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcurrentlyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IIIAsyncTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1EF3E38615BFDD0500B2A404 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		1EF3E38E15BFDD0500B2A404 /* ConcurrentlyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConcurrentlyTests-Info.plist"; sourceTree = "<group>"; };
+		1EF3E38E15BFDD0500B2A404 /* IIIAsyncTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IIIAsyncTests-Info.plist"; sourceTree = "<group>"; };
 		1EF3E39015BFDD0500B2A404 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1EF3E39215BFDD0500B2A404 /* ConcurrentlyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConcurrentlyTests.h; sourceTree = "<group>"; };
-		1EF3E39315BFDD0500B2A404 /* ConcurrentlyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConcurrentlyTests.m; sourceTree = "<group>"; };
+		1EF3E39215BFDD0500B2A404 /* IIIAsyncTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IIIAsyncTests.h; sourceTree = "<group>"; };
+		1EF3E39315BFDD0500B2A404 /* IIIAsyncTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IIIAsyncTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				1EF3E38515BFDD0500B2A404 /* SenTestingKit.framework in Frameworks */,
 				1EF3E38715BFDD0500B2A404 /* UIKit.framework in Frameworks */,
 				1EF3E38815BFDD0500B2A404 /* Foundation.framework in Frameworks */,
-				1EF3E38B15BFDD0500B2A404 /* libConcurrently.a in Frameworks */,
+				1EF3E38B15BFDD0500B2A404 /* libIIIAsync.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,8 +82,8 @@
 		1EF3E36715BFDD0500B2A404 = {
 			isa = PBXGroup;
 			children = (
-				1EF3E37715BFDD0500B2A404 /* Concurrently */,
-				1EF3E38C15BFDD0500B2A404 /* ConcurrentlyTests */,
+				1EF3E37715BFDD0500B2A404 /* IIIAsync */,
+				1EF3E38C15BFDD0500B2A404 /* IIIAsync */,
 				1EF3E37415BFDD0500B2A404 /* Frameworks */,
 				1EF3E37315BFDD0500B2A404 /* Products */,
 			);
@@ -92,8 +92,8 @@
 		1EF3E37315BFDD0500B2A404 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1EF3E37215BFDD0500B2A404 /* libConcurrently.a */,
-				1EF3E38315BFDD0500B2A404 /* ConcurrentlyTests.octest */,
+				1EF3E37215BFDD0500B2A404 /* libIIIAsync.a */,
+				1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,38 +108,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1EF3E37715BFDD0500B2A404 /* Concurrently */ = {
+		1EF3E37715BFDD0500B2A404 /* IIIAsync */ = {
 			isa = PBXGroup;
 			children = (
 				1EF3E37A15BFDD0500B2A404 /* IIIAsync.h */,
 				1EF3E37C15BFDD0500B2A404 /* IIIAsync.m */,
 				1EF3E37815BFDD0500B2A404 /* Supporting Files */,
 			);
-			path = Concurrently;
+			path = IIIAsync;
 			sourceTree = "<group>";
 		};
 		1EF3E37815BFDD0500B2A404 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1EF3E37915BFDD0500B2A404 /* Concurrently-Prefix.pch */,
+				1EF3E37915BFDD0500B2A404 /* IIIAsync-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1EF3E38C15BFDD0500B2A404 /* ConcurrentlyTests */ = {
+		1EF3E38C15BFDD0500B2A404 /* IIIAsync */ = {
 			isa = PBXGroup;
 			children = (
-				1EF3E39215BFDD0500B2A404 /* ConcurrentlyTests.h */,
-				1EF3E39315BFDD0500B2A404 /* ConcurrentlyTests.m */,
+				1EF3E39215BFDD0500B2A404 /* IIIAsyncTests.h */,
+				1EF3E39315BFDD0500B2A404 /* IIIAsyncTests.m */,
 				1EF3E38D15BFDD0500B2A404 /* Supporting Files */,
 			);
-			path = ConcurrentlyTests;
+			name = IIIAsync;
+			path = IIIAsyncTests;
 			sourceTree = "<group>";
 		};
 		1EF3E38D15BFDD0500B2A404 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1EF3E38E15BFDD0500B2A404 /* ConcurrentlyTests-Info.plist */,
+				1EF3E38E15BFDD0500B2A404 /* IIIAsyncTests-Info.plist */,
 				1EF3E38F15BFDD0500B2A404 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -148,9 +149,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1EF3E37115BFDD0500B2A404 /* Concurrently */ = {
+		1EF3E37115BFDD0500B2A404 /* IIIAsync */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EF3E39715BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "Concurrently" */;
+			buildConfigurationList = 1EF3E39715BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "IIIAsync" */;
 			buildPhases = (
 				1EF3E36E15BFDD0500B2A404 /* Sources */,
 				1EF3E36F15BFDD0500B2A404 /* Frameworks */,
@@ -160,14 +161,14 @@
 			);
 			dependencies = (
 			);
-			name = Concurrently;
+			name = IIIAsync;
 			productName = Concurrently;
-			productReference = 1EF3E37215BFDD0500B2A404 /* libConcurrently.a */;
+			productReference = 1EF3E37215BFDD0500B2A404 /* libIIIAsync.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		1EF3E38215BFDD0500B2A404 /* ConcurrentlyTests */ = {
+		1EF3E38215BFDD0500B2A404 /* IIIAsyncTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EF3E39A15BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "ConcurrentlyTests" */;
+			buildConfigurationList = 1EF3E39A15BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "IIIAsyncTests" */;
 			buildPhases = (
 				1EF3E37E15BFDD0500B2A404 /* Sources */,
 				1EF3E37F15BFDD0500B2A404 /* Frameworks */,
@@ -179,9 +180,9 @@
 			dependencies = (
 				1EF3E38A15BFDD0500B2A404 /* PBXTargetDependency */,
 			);
-			name = ConcurrentlyTests;
+			name = IIIAsyncTests;
 			productName = ConcurrentlyTests;
-			productReference = 1EF3E38315BFDD0500B2A404 /* ConcurrentlyTests.octest */;
+			productReference = 1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -193,7 +194,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Mustacheware;
 			};
-			buildConfigurationList = 1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "Concurrently" */;
+			buildConfigurationList = 1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "IIIAsync" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -205,8 +206,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EF3E37115BFDD0500B2A404 /* Concurrently */,
-				1EF3E38215BFDD0500B2A404 /* ConcurrentlyTests */,
+				1EF3E37115BFDD0500B2A404 /* IIIAsync */,
+				1EF3E38215BFDD0500B2A404 /* IIIAsyncTests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,7 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EF3E39415BFDD0500B2A404 /* ConcurrentlyTests.m in Sources */,
+				1EF3E39415BFDD0500B2A404 /* IIIAsyncTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +261,7 @@
 /* Begin PBXTargetDependency section */
 		1EF3E38A15BFDD0500B2A404 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1EF3E37115BFDD0500B2A404 /* Concurrently */;
+			target = 1EF3E37115BFDD0500B2A404 /* IIIAsync */;
 			targetProxy = 1EF3E38915BFDD0500B2A404 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -324,9 +325,9 @@
 			buildSettings = {
 				DSTROOT = /tmp/Concurrently.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
+				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IIIAsync;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -336,9 +337,9 @@
 			buildSettings = {
 				DSTROOT = /tmp/Concurrently.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
+				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IIIAsync;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -352,8 +353,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
-				INFOPLIST_FILE = "ConcurrentlyTests/ConcurrentlyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ConcurrentlyTests/IIIAsyncTests-Info.plist";
+				PRODUCT_NAME = IIIAsyncTests;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -367,8 +368,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
-				INFOPLIST_FILE = "ConcurrentlyTests/ConcurrentlyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ConcurrentlyTests/IIIAsyncTests-Info.plist";
+				PRODUCT_NAME = IIIAsyncTests;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -376,7 +377,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "Concurrently" */ = {
+		1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "IIIAsync" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EF3E39515BFDD0500B2A404 /* Debug */,
@@ -385,21 +386,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1EF3E39715BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "Concurrently" */ = {
+		1EF3E39715BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "IIIAsync" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EF3E39815BFDD0500B2A404 /* Debug */,
 				1EF3E39915BFDD0500B2A404 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		1EF3E39A15BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "ConcurrentlyTests" */ = {
+		1EF3E39A15BFDD0500B2A404 /* Build configuration list for PBXNativeTarget "IIIAsyncTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EF3E39B15BFDD0500B2A404 /* Debug */,
 				1EF3E39C15BFDD0500B2A404 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

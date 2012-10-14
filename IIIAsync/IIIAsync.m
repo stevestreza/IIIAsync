@@ -155,4 +155,28 @@
 	});
 }
 
+-(void)runWhileTrue:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback{
+	[self runConditional:condition whileConditionalIs:YES performBlock:block callback:callback];
+}
+
+-(void)runWhileFalse:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback{
+	[self runConditional:condition whileConditionalIs:NO performBlock:block callback:callback];
+}
+
+-(void)runConditional:(IIIAsyncConditional)condition whileConditionalIs:(BOOL)whileValue performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback{
+	dispatch_block_t __block nextStep = ^{
+		dispatch_async(dispatchQueue, ^{
+			BOOL result = condition();
+			if(result){
+				block(^(id result, NSError *error){
+					nextStep();
+				});
+			}else{
+				callback(nil, nil);
+			}
+		});
+	};
+	nextStep();
+}
+
 @end
