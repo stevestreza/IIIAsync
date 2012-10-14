@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Mustacheware. All rights reserved.
 //
 
-#import "ConcurrentlyTests.h"
+#import "IIIAsyncTests.h"
 #import "IIIAsync.h"
 
 @implementation IIIAsyncTests{

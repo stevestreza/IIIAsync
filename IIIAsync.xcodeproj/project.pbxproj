@@ -323,7 +323,7 @@
 		1EF3E39815BFDD0500B2A404 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/Concurrently.dst;
+				DSTROOT = /tmp/IIIAsync.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
@@ -335,7 +335,7 @@
 		1EF3E39915BFDD0500B2A404 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/Concurrently.dst;
+				DSTROOT = /tmp/IIIAsync.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
@@ -352,8 +352,8 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
-				INFOPLIST_FILE = "ConcurrentlyTests/IIIAsyncTests-Info.plist";
+				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
+				INFOPLIST_FILE = "IIIAsyncTests/IIIAsyncTests-Info.plist";
 				PRODUCT_NAME = IIIAsyncTests;
 				WRAPPER_EXTENSION = octest;
 			};
@@ -367,8 +367,8 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Concurrently/Concurrently-Prefix.pch";
-				INFOPLIST_FILE = "ConcurrentlyTests/IIIAsyncTests-Info.plist";
+				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
+				INFOPLIST_FILE = "IIIAsyncTests/IIIAsyncTests-Info.plist";
 				PRODUCT_NAME = IIIAsyncTests;
 				WRAPPER_EXTENSION = octest;
 			};
