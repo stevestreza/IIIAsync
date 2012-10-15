@@ -194,18 +194,39 @@
 	[self waitForTrigger];
 }
 
--(void)testRunConditionals{
+-(void)testRunTrueConditionals{
 	IIIAsync *async = [IIIAsync backgroundThreadAsync];
 	NSDate *startDate = [NSDate date];
-	__block NSInteger remaining = 10000000;
+	__block NSInteger remaining = 10000;
 	__block NSInteger count = 0;
 	[async runWhileTrue:^BOOL{
-		return --remaining >= 0;
+		return --remaining > 0;
 	} performBlock:^(IIIAsyncCallback callback) {
 		++count;
 		callback(nil, nil);
 	} callback:^(id result, NSError *error) {
-		NSLog(@"Whee count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
+		NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
+		NSAssert(count == 9999, @"Run count is not 9999: %i", count);
+		NSLog(@"runWhileTrue count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
+		[self trigger];
+	}];
+}
+
+-(void)testRunFalseConditionals{
+	IIIAsync *async = [IIIAsync backgroundThreadAsync];
+	NSDate *startDate = [NSDate date];
+	__block NSInteger remaining = 10000;
+	__block NSInteger count = 0;
+	
+	[async runWhileFalse:^BOOL{
+		return --remaining == 0;
+	} performBlock:^(IIIAsyncCallback callback) {
+		++count;
+		callback(nil, nil);
+	} callback:^(id result, NSError *error) {
+		NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
+		NSAssert(count == 9999, @"Run count is not 9999: %i", count);
+		NSLog(@"runWhileFalse count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
 		[self trigger];
 	}];
 	

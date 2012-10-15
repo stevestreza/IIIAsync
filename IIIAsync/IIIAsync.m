@@ -185,7 +185,7 @@
 	dispatch_block_t __block nextStep = ^{
 		dispatch_async(dispatchQueue, ^{
 			BOOL result = condition();
-			if(result){
+			if(result == whileValue){
 				block(^(id result, NSError *error){
 					nextStep();
 				});
