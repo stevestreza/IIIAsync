@@ -43,8 +43,14 @@ typedef BOOL(^IIIAsyncConditional)(void);
 -(void)iterateSerially:(NSArray *)blocks withIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback;
 -(void)iterateParallel:(NSArray *)blocks withIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback;
 
+-(void)iterateSeriallyWithIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback blocks:(id) block, ...;
+-(void)iterateParallelWithIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback blocks:(id) block, ...;
+
 -(void)runSeries:(NSArray *)tasks    callback:(IIIAsyncCallback)callback;
 -(void)runParallel:(NSArray *)blocks callback:(IIIAsyncCallback)callback;
+
+-(void)runSeriesWithCallback:(IIIAsyncCallback)callback   tasks:(id) task, ...;
+-(void)runParallelWithCallback:(IIIAsyncCallback)callback blocks:(id) block, ...;
 
 -(void)runWhileTrue:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback;
 -(void)runWhileFalse:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback;

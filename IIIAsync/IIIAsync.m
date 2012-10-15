@@ -27,6 +27,17 @@
 #import "IIIAsync.h"
 #import <dispatch/dispatch.h>
 
+#define IIIAddObjectsFromVAListWithObject(array, object) \
+	if (object) { \
+		id listObject = nil; \
+		va_list list; \
+		[array addObject:object]; \
+		va_start(list, object); \
+		while ((listObject = va_arg(list, id))) { \
+			[array addObject:listObject]; \
+		} \
+	}
+
 @implementation IIIAsync
 
 @synthesize dispatchQueue;
@@ -154,6 +165,18 @@
 	});
 }
 
+-(void)iterateSeriallyWithIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback blocks:(id) block, ... {
+	NSMutableArray *array = [NSMutableArray array];
+	IIIAddObjectsFromVAListWithObject(array, block);
+	[self iterateSerially:array withIterator:iterator callback:callback];
+}
+
+-(void)iterateParallelWithIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback blocks:(id) block, ... {
+	NSMutableArray *array = [NSMutableArray array];
+	IIIAddObjectsFromVAListWithObject(array, block);
+	[self iterateParallel:array withIterator:iterator callback:callback];
+}
+
 -(void)runSeries:(NSArray *)tasks callback:(IIIAsyncCallback)callback{
 	dispatch_async(dispatchQueue, ^{
 		[self iterateSerially:tasks withIterator:^(id object, NSUInteger index, IIIAsyncCallback callback) {
@@ -172,6 +195,18 @@
 			block(callback);
 		} callback:callback];
 	});
+}
+
+-(void)runSeriesWithCallback:(IIIAsyncCallback)callback tasks:(id) task, ... {
+	NSMutableArray *array = [NSMutableArray array];
+	IIIAddObjectsFromVAListWithObject(array, task);
+	[self runSeries:array callback:callback];
+}
+
+-(void)runParallelWithCallback:(IIIAsyncCallback)callback blocks:(id) block, ... {
+	NSMutableArray *array = [NSMutableArray array];
+	IIIAddObjectsFromVAListWithObject(array, block);
+	[self runParallel:array callback:callback];
 }
 
 -(void)runWhileTrue:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback{
