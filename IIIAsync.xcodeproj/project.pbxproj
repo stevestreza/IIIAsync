@@ -42,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1EB4C757162BBD2A00D7C081 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
+		1EB4C758162BBD2A00D7C081 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		1EF3E37215BFDD0500B2A404 /* libIIIAsync.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIIIAsync.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF3E37515BFDD0500B2A404 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1EF3E37915BFDD0500B2A404 /* IIIAsync-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IIIAsync-Prefix.pch"; sourceTree = "<group>"; };
@@ -83,9 +85,11 @@
 			isa = PBXGroup;
 			children = (
 				1EF3E37715BFDD0500B2A404 /* IIIAsync */,
-				1EF3E38C15BFDD0500B2A404 /* IIIAsync */,
+				1EF3E38C15BFDD0500B2A404 /* IIIAsyncTests */,
 				1EF3E37415BFDD0500B2A404 /* Frameworks */,
 				1EF3E37315BFDD0500B2A404 /* Products */,
+				1EB4C757162BBD2A00D7C081 /* LICENSE.md */,
+				1EB4C758162BBD2A00D7C081 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,14 +130,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1EF3E38C15BFDD0500B2A404 /* IIIAsync */ = {
+		1EF3E38C15BFDD0500B2A404 /* IIIAsyncTests */ = {
 			isa = PBXGroup;
 			children = (
 				1EF3E39215BFDD0500B2A404 /* IIIAsyncTests.h */,
 				1EF3E39315BFDD0500B2A404 /* IIIAsyncTests.m */,
 				1EF3E38D15BFDD0500B2A404 /* Supporting Files */,
 			);
-			name = IIIAsync;
 			path = IIIAsyncTests;
 			sourceTree = "<group>";
 		};
