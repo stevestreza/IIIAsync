@@ -65,6 +65,27 @@ NSArray *images = @[
 }];
 ```
 
+Or:
+
+```objective-c
+[[IIIAsync mainThread] iterateParallelWithIterator:^(id object, NSUInteger index, IIIAsyncCallback callback){
+	NSURL *url = (NSURL *)object;
+	[self loadImageAtURL:url handler:^(UIImage *image, NSError *error){
+		callback(image, error);
+	}];
+} callback:^(id result, NSError *error){
+	if(error){
+		NSLog(@"One of the operations returned an error: %@", error);
+	}else{
+		NSArray *images = (NSArray *)result;
+		NSLog(@"All three images: %@", result);
+	}
+} blocks:[NSURL URLWithString:@"http://placekitten.com/200/300"],
+	[NSURL URLWithString:@"http://placekitten.com/300/200"],
+	[NSURL URLWithString:@"http://placekitten.com/450/450"], nil];
+```
+
+
 Tests
 =====
 
