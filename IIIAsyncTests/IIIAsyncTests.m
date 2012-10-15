@@ -87,6 +87,32 @@
 	}
 }
 
+- (void)testIterateSeriallyVarArg
+{
+	IIIAsync *async = [IIIAsync mainThreadAsync];
+	NSArray *items = @[@"Hello", @"World", @"What's up", @"not much", @"how about you", @"YOLO"];
+	__block NSArray *response = nil;
+
+	[async iterateSeriallyWithIterator:^(id object, NSUInteger index, IIIAsyncCallback callback) {
+		//		NSLog(@"Object! %@", object);
+		callback([object uppercaseString], nil);
+	} callback:^(id result, NSError *error) {
+		//		NSLog(@"Done!");
+		response = result;
+		[self trigger];
+	} blocks:@"Hello", @"World", @"What's up", @"not much", @"how about you", @"YOLO", nil];
+
+	[self waitForTrigger];
+
+	for(NSUInteger index = 0; index < items.count; index++){
+		NSString *source = [items objectAtIndex:index];
+		NSString *dest = [response objectAtIndex:index];
+
+		STAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
+	}
+}
+
+
 - (void)testIterateParallel
 {
 	IIIAsync *async = [IIIAsync globalAsync];
@@ -107,6 +133,29 @@
 		NSString *source = [items objectAtIndex:index];
 		NSString *dest = [response objectAtIndex:index];
 		
+		STAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
+	}
+}
+
+- (void)testIterateParallelVarArg
+{
+	IIIAsync *async = [IIIAsync globalAsync];
+	NSArray *items = @[@"Hello", @"World", @"What's up", @"not much", @"how about you", @"YOLO"];
+	__block NSArray *response = nil;
+
+	[async iterateParallelWithIterator:^(id object, NSUInteger index, IIIAsyncCallback callback) {
+		callback([object uppercaseString], nil);
+	} callback:^(id result, NSError *error) {
+		response = result;
+		[self trigger];
+	} blocks:@"Hello", @"World", @"What's up", @"not much", @"how about you", @"YOLO", nil];
+
+	[self waitForTrigger];
+
+	for(NSUInteger index = 0; index < items.count; index++){
+		NSString *source = [items objectAtIndex:index];
+		NSString *dest = [response objectAtIndex:index];
+
 		STAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
 	}
 }
@@ -157,6 +206,43 @@
 	[self waitForTrigger];
 }
 
+-(void)testParallelMainThreadVarArg{
+	__block BOOL didStart1, didEnd1, didStart2, didEnd2, didStart3, didEnd3;
+	didStart1 = didStart2 = didStart3 = didEnd1 = didEnd2 = didEnd3 = NO;
+
+	IIIAsync *async = [IIIAsync mainThreadAsync];
+	[async runSeriesWithCallback:^(id result, NSError *error) {
+		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
+		[self trigger];
+	} tasks:^(IIIAsyncCallback callback){
+		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		ASSERT_STATE(NO, NO, NO, NO, NO, NO);
+		didStart1 = YES;
+		ASSERT_STATE(YES, NO, NO, NO, NO, NO);
+		didEnd1 = YES;
+		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
+		callback(nil, nil);
+	}, ^(IIIAsyncCallback callback){
+		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
+		didStart2 = YES;
+		ASSERT_STATE(YES, YES, YES, NO, NO, NO);
+		didEnd2 = YES;
+		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
+		callback(nil, nil);
+	}, ^(IIIAsyncCallback callback){
+		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
+		didStart3 = YES;
+		ASSERT_STATE(YES, YES, YES, YES, YES, NO);
+		didEnd3 = YES;
+		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
+		callback(nil, nil);
+	}, nil];
+	[self waitForTrigger];
+}
+
 -(void)testSeriesBackground{
 	__block BOOL didStart1, didEnd1, didStart2, didEnd2, didStart3, didEnd3;
 	didStart1 = didStart2 = didStart3 = didEnd1 = didEnd2 = didEnd3 = NO;
@@ -191,6 +277,43 @@
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		[self trigger];
 	}];
+	[self waitForTrigger];
+}
+
+-(void)testSeriesBackgroundVarArg{
+	__block BOOL didStart1, didEnd1, didStart2, didEnd2, didStart3, didEnd3;
+	didStart1 = didStart2 = didStart3 = didEnd1 = didEnd2 = didEnd3 = NO;
+
+	IIIAsync *async = [IIIAsync backgroundThreadAsync];
+	[async runSeriesWithCallback:^(id result, NSError *error) {
+		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
+		[self trigger];
+	} tasks:^(IIIAsyncCallback callback){
+		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		ASSERT_STATE(NO, NO, NO, NO, NO, NO);
+		didStart1 = YES;
+		ASSERT_STATE(YES, NO, NO, NO, NO, NO);
+		didEnd1 = YES;
+		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
+		callback(nil, nil);
+	}, ^(IIIAsyncCallback callback){
+		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
+		didStart2 = YES;
+		ASSERT_STATE(YES, YES, YES, NO, NO, NO);
+		didEnd2 = YES;
+		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
+		callback(nil, nil);
+	}, ^(IIIAsyncCallback callback){
+		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
+		didStart3 = YES;
+		ASSERT_STATE(YES, YES, YES, YES, YES, NO);
+		didEnd3 = YES;
+		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
+		callback(nil, nil);
+	}, nil];
 	[self waitForTrigger];
 }
 
