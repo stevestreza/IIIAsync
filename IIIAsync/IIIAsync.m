@@ -132,6 +132,7 @@
 				
 				if(error){
 					dispatch_async(dispatchQueue, ^{
+						finish = YES;
 						callback(nil, error);
 					});
 					return;
