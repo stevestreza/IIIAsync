@@ -1,5 +1,7 @@
 `IIIAsync` is a control flow system for managing multiple operations serially or in parallel. It can collect the results of multiple operations, either objects or errors. When all operations finish, you get a callback with the results in a structured order, regardless of which order they complete. You can run these operations either on the main queue, on a single background thread pool, or on a multi-threaded background pool. It makes it easier to organize code and obtain results, letting you build powerful higher-order operations that rely on multiple asynchronous calls.
 
+`IIIAsync` is heavily modeled after and inspired by the brilliant [async.js](https://github.com/caolan/async) library by [Caolan McMahon](https://github.com/caolan).
+
 Installation
 ============
 
