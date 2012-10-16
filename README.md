@@ -24,8 +24,8 @@ Each of these has the following set of APIs:
 - `-[IIIAsync iterateParallel:withIterator:callback:]` - iterates over an array, invoking the iterator block on each item in the array, and performs the callback after the iteration is finished. Order is not guaranteed. The result will be an array of return values and an optional error.
 - `-[IIIAsync runSeries:callback:]` - iterates over an array of blocks serially and performs the callback when the iteration is complete. Order is guaranteed; each block will not be invoked until the previous block is completed. The result will be an array of return values and an optional error.
 - `-[IIIAsync runParallel:callback:]` - iterates over an array of blocks in parallel and performs the callback when the iteration is complete. Order is not guaranteed. The result will be an array of return values and an optional error.
-- `-[IIIAsync runWhileTrue:performBlock::callback:]` - Performs a block while a conditional returns true, and performs the callback when the conditional returns false. Returns nothing and an optional error.
-- `-[IIIAsync runWhileFalse:performBlock::callback:]` - Performs a block while a conditional returns false, and performs the callback when the conditional returns true. Returns nothing and an optional error.
+- `-[IIIAsync runWhileTrue:performBlock:callback:]` - Performs a block while a conditional returns true, and performs the callback when the conditional returns false. Returns nothing and an optional error.
+- `-[IIIAsync runWhileFalse:performBlock:callback:]` - Performs a block while a conditional returns false, and performs the callback when the conditional returns true. Returns nothing and an optional error.
 
 There are a few block types that can be called, based on API:
 
