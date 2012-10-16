@@ -27,9 +27,9 @@
 #import <Foundation/Foundation.h>
 #import <dispatch/dispatch.h>
 
-typedef void(^IIIAsyncCallback)(id result, NSError *error);
-typedef void(^IIIAsyncBlock)(IIIAsyncCallback callback);
-typedef void(^IIIAsyncIterator)(id object, NSUInteger index, IIIAsyncCallback callback);
+typedef void(^IIIAsyncTaskCompletionHandler)(id result, NSError *error);
+typedef void(^IIIAsyncTask)(IIIAsyncTaskCompletionHandler completionHandler);
+typedef void(^IIIAsyncIteratorTask)(id object, NSUInteger index, IIIAsyncTaskCompletionHandler completionHandler);
 typedef BOOL(^IIIAsyncConditional)(void);
 
 @interface IIIAsync : NSObject
@@ -40,13 +40,13 @@ typedef BOOL(^IIIAsyncConditional)(void);
 +(IIIAsync *)backgroundThreadAsync;
 +(IIIAsync *)globalAsync;
 
--(void)iterateSerially:(NSArray *)blocks withIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback;
--(void)iterateParallel:(NSArray *)blocks withIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback;
+-(void)iterateSerially:(NSArray *)items withIteratorTask:(IIIAsyncIteratorTask)iterator completionHandler:(IIIAsyncTaskCompletionHandler)callback;
+-(void)iterateParallel:(NSArray *)items withIteratorTask:(IIIAsyncIteratorTask)iterator completionHandler:(IIIAsyncTaskCompletionHandler)callback;
 
--(void)runSeries:(NSArray *)tasks    callback:(IIIAsyncCallback)callback;
--(void)runParallel:(NSArray *)blocks callback:(IIIAsyncCallback)callback;
+-(void)runTasksInSeries:(NSArray *)tasks    withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback;
+-(void)runTasksInParallel:(NSArray *)tasks withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback;
 
--(void)runWhileTrue:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback;
--(void)runWhileFalse:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback;
+-(void)runWhileTrue:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)task withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback;
+-(void)runWhileFalse:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)task withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback;
 
 @end

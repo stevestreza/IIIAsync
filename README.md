@@ -29,9 +29,9 @@ Each of these has the following set of APIs:
 
 There are a few block types that can be called, based on API:
 
-- `IIIAsyncBlock`: Accepts an `IIIAsyncCallback` block (see below). You supply an array of these to the `run*:` APIs for your operations. When the operation is complete, you call the `IIIAsyncCallback` block to signal that it has finished.
-- `IIIAsyncIterator`: Accepts an `id` object, an `NSUInteger` representing the index of the object, and an `IIIAsyncCallback` block (see below). You supply one of these to the `iterate*:` APIs for your operations. When each iteration has completed, you call the `IIIAsyncCallback` block to signal that it has finished.
-- `IIIAsyncCallback`: Accepts an `id` object and an optional error. You call this with the result of your operation and an optional `NSError`, which will be collected as necessary. You also implement this to get the results of an async operation.
+- `IIIAsyncTask`: Accepts an `IIIAsyncTaskCompletionHandler` block (see below). You supply an array of these to the `run*:` APIs for your operations. When the operation is complete, you call the `IIIAsyncTaskCompletionHandler` block to signal that it has finished.
+- `IIIAsyncIteratorTask`: Accepts an `id` object, an `NSUInteger` representing the index of the object, and an `IIIAsyncTaskCompletionHandler` block (see below). You supply one of these to the `iterate*:` APIs for your operations. When each iteration has completed, you call the `IIIAsyncTaskCompletionHandler` block to signal that it has finished.
+- `IIIAsyncTaskCompletionHandler`: Accepts an `id` object and an optional error. You call this with the result of your operation and an optional `NSError`, which will be collected as necessary. You also implement this to get the results of an async operation.
 - `IIIAsyncConditional`: Accepts no parameters and returns a `BOOL`. You implement this for the `runWhile*:` APIs, to determine when to break out of the loop.
 
 Example
@@ -50,7 +50,7 @@ NSArray *images = @[
 	[NSURL URLWithString:@"http://placekitten.com/450/450"]
 ];
 
-[[IIIAsync mainThread] iterateParallel:images withIterator:^(id object, NSUInteger index, IIIAsyncCallback callback){
+[[IIIAsync mainThread] iterateParallel:images withIterator:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback){
 	NSURL *url = (NSURL *)object;
 	[self loadImageAtURL:url handler:^(UIImage *image, NSError *error){
 		callback(image, error);

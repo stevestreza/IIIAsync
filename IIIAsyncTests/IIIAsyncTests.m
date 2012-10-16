@@ -68,10 +68,10 @@
 	NSArray *items = @[@"Hello", @"World", @"What's up", @"not much", @"how about you", @"YOLO"];
 	__block NSArray *response = nil;
 	
-	[async iterateSerially:items withIterator:^(id object, NSUInteger index, IIIAsyncCallback callback) {
+	[async iterateSerially:items withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback) {
 //		NSLog(@"Object! %@", object);
 		callback([object uppercaseString], nil);
-	} callback:^(id result, NSError *error) {
+	} completionHandler:^(id result, NSError *error) {
 //		NSLog(@"Done!");
 		response = result;
 		[self trigger];
@@ -94,9 +94,9 @@
 	
 	__block NSArray *response = nil;
 
-	[async iterateParallel:items withIterator:^(id object, NSUInteger index, IIIAsyncCallback callback) {
+	[async iterateParallel:items withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback) {
 		callback([object uppercaseString], nil);
-	} callback:^(id result, NSError *error) {
+	} completionHandler:^(id result, NSError *error) {
 		response = result;
 		[self trigger];
 	}];
@@ -125,7 +125,7 @@
 	didStart1 = didStart2 = didStart3 = didEnd1 = didEnd2 = didEnd3 = NO;
 	
 	IIIAsync *async = [IIIAsync mainThreadAsync];
-	[async runSeries:@[^(IIIAsyncCallback callback){
+	[async runTasksInSeries:@[^(IIIAsyncTaskCompletionHandler callback){
 		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(NO, NO, NO, NO, NO, NO);
 		didStart1 = YES;
@@ -133,7 +133,7 @@
 		didEnd1 = YES;
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		callback(nil, nil);
-	}, ^(IIIAsyncCallback callback){
+	}, ^(IIIAsyncTaskCompletionHandler callback){
 		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		didStart2 = YES;
@@ -141,7 +141,7 @@
 		didEnd2 = YES;
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		callback(nil, nil);
-	}, ^(IIIAsyncCallback callback){
+	}, ^(IIIAsyncTaskCompletionHandler callback){
 		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		didStart3 = YES;
@@ -149,7 +149,7 @@
 		didEnd3 = YES;
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		callback(nil, nil);
-	}] callback:^(id result, NSError *error) {
+	}] withCompletionHandler:^(id result, NSError *error) {
 		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		[self trigger];
@@ -162,7 +162,7 @@
 	didStart1 = didStart2 = didStart3 = didEnd1 = didEnd2 = didEnd3 = NO;
 	
 	IIIAsync *async = [IIIAsync backgroundThreadAsync];
-	[async runSeries:@[^(IIIAsyncCallback callback){
+	[async runTasksInSeries:@[^(IIIAsyncTaskCompletionHandler callback){
 		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(NO, NO, NO, NO, NO, NO);
 		didStart1 = YES;
@@ -170,7 +170,7 @@
 		didEnd1 = YES;
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		callback(nil, nil);
-	}, ^(IIIAsyncCallback callback){
+	}, ^(IIIAsyncTaskCompletionHandler callback){
 		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		didStart2 = YES;
@@ -178,7 +178,7 @@
 		didEnd2 = YES;
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		callback(nil, nil);
-	}, ^(IIIAsyncCallback callback){
+	}, ^(IIIAsyncTaskCompletionHandler callback){
 		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		didStart3 = YES;
@@ -186,7 +186,7 @@
 		didEnd3 = YES;
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		callback(nil, nil);
-	}] callback:^(id result, NSError *error) {
+	}] withCompletionHandler:^(id result, NSError *error) {
 		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		[self trigger];
@@ -201,10 +201,10 @@
 	__block NSInteger count = 0;
 	[async runWhileTrue:^BOOL{
 		return --remaining > 0;
-	} performBlock:^(IIIAsyncCallback callback) {
+	} performTask:^(IIIAsyncTaskCompletionHandler callback) {
 		++count;
 		callback(nil, nil);
-	} callback:^(id result, NSError *error) {
+	} withCompletionHandler:^(id result, NSError *error) {
 		NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
 		NSAssert(count == 9999, @"Run count is not 9999: %i", count);
 		NSLog(@"runWhileTrue count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
@@ -220,10 +220,10 @@
 	
 	[async runWhileFalse:^BOOL{
 		return --remaining == 0;
-	} performBlock:^(IIIAsyncCallback callback) {
+	} performTask:^(IIIAsyncTaskCompletionHandler callback) {
 		++count;
 		callback(nil, nil);
-	} callback:^(id result, NSError *error) {
+	} withCompletionHandler:^(id result, NSError *error) {
 		NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
 		NSAssert(count == 9999, @"Run count is not 9999: %i", count);
 		NSLog(@"runWhileFalse count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);

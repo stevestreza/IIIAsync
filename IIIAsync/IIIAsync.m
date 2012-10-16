@@ -67,7 +67,7 @@
 	return sGlobalAsync;
 }
 
--(void)iterateSerially:(NSArray *)items withIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback{
+-(void)iterateSerially:(NSArray *)items withIteratorTask:(IIIAsyncIteratorTask)iterator completionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_async(dispatchQueue, ^{
 		__block NSUInteger index = 0;
 		
@@ -107,7 +107,7 @@
 	});
 }
 
--(void)iterateParallel:(NSArray *)items withIterator:(IIIAsyncIterator)iterator callback:(IIIAsyncCallback)callback{
+-(void)iterateParallel:(NSArray *)items withIteratorTask:(IIIAsyncIteratorTask)iterator completionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_async(dispatchQueue, ^{
 		__block BOOL finish = NO;
 		__block NSInteger count = items.count;
@@ -117,7 +117,7 @@
 			[returnValues addObject:[NSNull null]];
 		}
 		
-		dispatch_block_t (^blockForItemAtIndex)(NSUInteger index, IIIAsyncCallback callback) = ^(NSUInteger index, IIIAsyncCallback callback){
+		dispatch_block_t (^blockForItemAtIndex)(NSUInteger index, IIIAsyncTaskCompletionHandler callback) = ^(NSUInteger index, IIIAsyncTaskCompletionHandler callback){
 			return ^{
 				if(finish) return;
 				
@@ -126,7 +126,7 @@
 			};
 		};
 		
-		IIIAsyncCallback (^itemCallbackForIndex)(NSUInteger index) = ^(NSUInteger index){
+		IIIAsyncTaskCompletionHandler (^itemCallbackForIndex)(NSUInteger index) = ^(NSUInteger index){
 			return ^(id result, NSError *error){
 				if(finish) return;
 				
@@ -153,35 +153,35 @@
 	});
 }
 
--(void)runSeries:(NSArray *)tasks callback:(IIIAsyncCallback)callback{
+-(void)runTasksInSeries:(NSArray *)tasks withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_async(dispatchQueue, ^{
-		[self iterateSerially:tasks withIterator:^(id object, NSUInteger index, IIIAsyncCallback callback) {
-			IIIAsyncBlock block = (IIIAsyncBlock)object;
+		[self iterateSerially:tasks withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback) {
+			IIIAsyncTask block = (IIIAsyncTask)object;
 			dispatch_async(dispatchQueue, ^{
 				block(callback);
 			});
-		} callback:callback];
+		} completionHandler:callback];
 	});
 }
 
--(void)runParallel:(NSArray *)blocks callback:(IIIAsyncCallback)callback{
+-(void)runTasksInParallel:(NSArray *)blocks withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_async(dispatchQueue, ^{
-		[self iterateParallel:blocks withIterator:^(id object, NSUInteger index, IIIAsyncCallback callback) {
-			IIIAsyncBlock block = (IIIAsyncBlock)object;
+		[self iterateParallel:blocks withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback) {
+			IIIAsyncTask block = (IIIAsyncTask)object;
 			block(callback);
-		} callback:callback];
+		} completionHandler:callback];
 	});
 }
 
--(void)runWhileTrue:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback{
+-(void)runWhileTrue:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)block withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	[self runConditional:condition whileConditionalIs:YES performBlock:block callback:callback];
 }
 
--(void)runWhileFalse:(IIIAsyncConditional)condition performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback{
+-(void)runWhileFalse:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)block withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	[self runConditional:condition whileConditionalIs:NO performBlock:block callback:callback];
 }
 
--(void)runConditional:(IIIAsyncConditional)condition whileConditionalIs:(BOOL)whileValue performBlock:(IIIAsyncBlock)block callback:(IIIAsyncCallback)callback{
+-(void)runConditional:(IIIAsyncConditional)condition whileConditionalIs:(BOOL)whileValue performBlock:(IIIAsyncTask)block callback:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_block_t __block nextStep = ^{
 		dispatch_async(dispatchQueue, ^{
 			BOOL result = condition();
