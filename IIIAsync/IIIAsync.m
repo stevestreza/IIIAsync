@@ -157,37 +157,37 @@
 -(void)runTasksInSeries:(NSArray *)tasks withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_async(dispatchQueue, ^{
 		[self iterateSerially:tasks withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback) {
-			IIIAsyncTask block = (IIIAsyncTask)object;
+			IIIAsyncTask task = (IIIAsyncTask)object;
 			dispatch_async(dispatchQueue, ^{
-				block(callback);
+				task(callback);
 			});
 		} completionHandler:callback];
 	});
 }
 
--(void)runTasksInParallel:(NSArray *)blocks withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
+-(void)runTasksInParallel:(NSArray *)tasks withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_async(dispatchQueue, ^{
-		[self iterateParallel:blocks withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback) {
-			IIIAsyncTask block = (IIIAsyncTask)object;
-			block(callback);
+		[self iterateParallel:tasks withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler callback) {
+			IIIAsyncTask task = (IIIAsyncTask)object;
+			task(callback);
 		} completionHandler:callback];
 	});
 }
 
--(void)runWhileTrue:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)block withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
-	[self runConditional:condition whileConditionalIs:YES performBlock:block callback:callback];
+-(void)runWhileTrue:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)task withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
+	[self runConditional:condition whileConditionalIs:YES performTask:task callback:callback];
 }
 
--(void)runWhileFalse:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)block withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
-	[self runConditional:condition whileConditionalIs:NO performBlock:block callback:callback];
+-(void)runWhileFalse:(IIIAsyncConditional)condition performTask:(IIIAsyncTask)task withCompletionHandler:(IIIAsyncTaskCompletionHandler)callback{
+	[self runConditional:condition whileConditionalIs:NO performTask:task callback:callback];
 }
 
--(void)runConditional:(IIIAsyncConditional)condition whileConditionalIs:(BOOL)whileValue performBlock:(IIIAsyncTask)block callback:(IIIAsyncTaskCompletionHandler)callback{
+-(void)runConditional:(IIIAsyncConditional)condition whileConditionalIs:(BOOL)whileValue performTask:(IIIAsyncTask)task callback:(IIIAsyncTaskCompletionHandler)callback{
 	dispatch_block_t __block nextStep = ^{
 		dispatch_async(dispatchQueue, ^{
 			BOOL result = condition();
 			if(result == whileValue){
-				block(^(id result, NSError *error){
+				task(^(id result, NSError *error){
 					nextStep();
 				});
 			}else{
