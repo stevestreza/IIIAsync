@@ -68,6 +68,11 @@
 }
 
 -(void)iterateSerially:(NSArray *)items withIteratorTask:(IIIAsyncIteratorTask)iterator completionHandler:(IIIAsyncTaskCompletionHandler)callback{
+	if(!items.count){
+		callback([NSArray array], nil);
+		return;
+	}
+	
 	dispatch_async(dispatchQueue, ^{
 		__block NSUInteger index = 0;
 		
