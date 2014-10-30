@@ -136,8 +136,8 @@
 				if(finish) return;
 				
 				if(error){
+                    finish = YES;
 					dispatch_async(dispatchQueue, ^{
-						finish = YES;
 						callback(nil, error);
 					});
 					return;
