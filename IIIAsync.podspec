@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IIIAsync"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "Concurrency control flow system for Objective-C"
 
   s.description  = <<-DESC
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/sdgandhi/IIIAsync.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/sdgandhi/IIIAsync.git", :tag => "1.0.2" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
