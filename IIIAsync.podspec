@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IIIAsync"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "Concurrency control flow system for Objective-C"
 
   s.description  = <<-DESC
@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios
+  s.platform     = :ios, '7.0'
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/sdgandhi/IIIAsync.git", :tag => "1.0.2" }
+  s.source       = { :git => "https://github.com/sdgandhi/IIIAsync.git", :tag => "1.0.3" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

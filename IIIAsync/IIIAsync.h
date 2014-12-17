@@ -34,7 +34,7 @@ typedef BOOL(^IIIAsyncConditional)(void);
 
 @interface IIIAsync : NSObject
 
-@property (nonatomic, readonly, assign) dispatch_queue_t dispatchQueue;
+@property (nonatomic, readonly, retain) dispatch_queue_t dispatchQueue;
 
 +(IIIAsync *)mainThreadAsync;
 +(IIIAsync *)backgroundThreadAsync;
