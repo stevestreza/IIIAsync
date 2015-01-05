@@ -99,6 +99,7 @@
 			iterator(object, index, ^(id result, NSError *error){
 				if(error){
 					callback(nil, error);
+					return;
 				}
 				
 				if(result){
