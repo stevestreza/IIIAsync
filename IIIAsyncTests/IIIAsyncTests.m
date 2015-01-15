@@ -27,9 +27,12 @@
 #import "IIIAsyncTests.h"
 #import "IIIAsync.h"
 
+static const NSTimeInterval DEBOUNCE_TIME = 2.0;
+
 @implementation IIIAsyncTests{
 	NSDate *triggerStart;
 	BOOL trigger;
+    NSTimer * debounceTriggerTimer;
 }
 
 - (void)setUp
@@ -60,6 +63,15 @@
 -(void)trigger{
 	trigger = NO;
 	NSLog(@"Triggered after %g seconds", [[NSDate date] timeIntervalSinceDate:triggerStart]);
+}
+
+-(void)debouncedTrigger{
+    [debounceTriggerTimer invalidate];
+    debounceTriggerTimer = [NSTimer scheduledTimerWithTimeInterval:DEBOUNCE_TIME
+                                                            target:self
+                                                          selector:@selector(trigger)
+                                                          userInfo:nil
+                                                           repeats:NO];
 }
 
 - (void)testIterateSerially
@@ -213,24 +225,44 @@
 }
 
 -(void)testRunFalseConditionals{
-	IIIAsync *async = [IIIAsync backgroundThreadAsync];
-	NSDate *startDate = [NSDate date];
-	__block NSInteger remaining = 10000;
-	__block NSInteger count = 0;
-	
-	[async runWhileFalse:^BOOL{
-		return --remaining == 0;
-	} performTask:^(IIIAsyncTaskCompletionHandler callback) {
-		++count;
-		callback(nil, nil);
-	} withCompletionHandler:^(id result, NSError *error) {
-		NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
-		NSAssert(count == 9999, @"Run count is not 9999: %i", count);
-		NSLog(@"runWhileFalse count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
-		[self trigger];
-	}];
-	
-	[self waitForTrigger];
+    IIIAsync *async = [IIIAsync backgroundThreadAsync];
+    NSDate *startDate = [NSDate date];
+    __block NSInteger remaining = 10000;
+    __block NSInteger count = 0;
+    
+    [async runWhileFalse:^BOOL{
+        return --remaining == 0;
+    } performTask:^(IIIAsyncTaskCompletionHandler callback) {
+        ++count;
+        callback(nil, nil);
+    } withCompletionHandler:^(id result, NSError *error) {
+        NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
+        NSAssert(count == 9999, @"Run count is not 9999: %i", count);
+        NSLog(@"runWhileFalse count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
+        [self trigger];
+    }];
+    
+    [self waitForTrigger];
+}
+
+-(void)testIterateParallelFailureRaceCondition{
+    __block NSInteger completionHandlerCallCount = 0;
+    
+    [[IIIAsync mainThreadAsync]
+     iterateParallel:@[@1, @2, @3, @4]
+     withIteratorTask:^(id object, NSUInteger index, IIIAsyncTaskCompletionHandler completionHandler) {
+        NSError * dummyError = [[NSError alloc] initWithDomain:@"IIIAsync"
+                                                          code:500
+                                                      userInfo:@{ NSLocalizedDescriptionKey : @"Dummy Test Error" }];
+         completionHandler(nil, dummyError);
+     } completionHandler:^(id result, NSError *error) {
+         [self debouncedTrigger];
+         completionHandlerCallCount++;
+    }];
+    
+    [self waitForTrigger];
+    
+    STAssertEquals(completionHandlerCallCount, 1, @"completionHandler should only be called once");
 }
 
 @end
