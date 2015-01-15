@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "IIIAsync"
   # Version needs to be fixed once PR is merged and tag is pushed
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "Concurrency control flow system for Objective-C"
 
   s.description  = <<-DESC
