@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "IIIAsync"
+  # Version needs to be fixed once PR is merged and tag is pushed
   s.version      = "1.0.4"
   s.summary      = "Concurrency control flow system for Objective-C"
 
@@ -23,9 +24,7 @@ Pod::Spec.new do |s|
                    IIIAsync is a control flow system for managing multiple operations serially or in parallel. It can collect the results of multiple operations, either objects or errors. When all operations finish, you get a completion handler with the results in a structured order, regardless of which order they complete. You can run these operations either on the main queue, on a single background thread pool, or on a multi-threaded background pool. It makes it easier to organize code and obtain results, letting you build powerful higher-order operations that rely on multiple asynchronous calls. IIIAsync is heavily modeled after and inspired by the brilliant async.js library by Caolan McMahon.
                    DESC
 
-  s.homepage     = "https://github.com/sdgandhi/IIIAsync"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
-
+  s.homepage     = "https://github.com/stevestreza/IIIAsync"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -34,8 +33,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = { :type => "As-Is", :file => "LICENSE.md" }
-
+  s.license      = 'MIT'
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -55,15 +53,16 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '6.0'
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-
-  s.source       = { :git => "https://github.com/sdgandhi/IIIAsync.git", :tag => "1.0.4" }
+  # Need to add tag once PR is merged. Spec will not pass validation otherwise.
+  
+  s.source       = { :git => "https://github.com/stevestreza/IIIAsync.git" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
