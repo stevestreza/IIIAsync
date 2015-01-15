@@ -256,7 +256,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 	
 	[self waitForTrigger];
 	
-	STAssertEquals(completionHandlerCallCount, 1, @"completionHandler should only be called once");
+	STAssertTrue(completionHandlerCallCount == 1, @"completionHandler should only be called once");
 }
 
 @end
