@@ -62,7 +62,7 @@ Pod::Spec.new do |s|
   #
   # Need to add tag once PR is merged. Spec will not pass validation otherwise.
   
-  s.source       = { :git => "https://github.com/stevestreza/IIIAsync.git" }
+  s.source       = { :git => "https://github.com/stevestreza/IIIAsync.git", :tag => "v#{spec.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
