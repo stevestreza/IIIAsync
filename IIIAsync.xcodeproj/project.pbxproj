@@ -10,7 +10,6 @@
 		1EF3E37615BFDD0500B2A404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37515BFDD0500B2A404 /* Foundation.framework */; };
 		1EF3E37B15BFDD0500B2A404 /* IIIAsync.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EF3E37A15BFDD0500B2A404 /* IIIAsync.h */; };
 		1EF3E37D15BFDD0500B2A404 /* IIIAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF3E37C15BFDD0500B2A404 /* IIIAsync.m */; };
-		1EF3E38515BFDD0500B2A404 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */; };
 		1EF3E38715BFDD0500B2A404 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E38615BFDD0500B2A404 /* UIKit.framework */; };
 		1EF3E38815BFDD0500B2A404 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37515BFDD0500B2A404 /* Foundation.framework */; };
 		1EF3E38B15BFDD0500B2A404 /* libIIIAsync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF3E37215BFDD0500B2A404 /* libIIIAsync.a */; };
@@ -49,8 +48,7 @@
 		1EF3E37915BFDD0500B2A404 /* IIIAsync-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IIIAsync-Prefix.pch"; sourceTree = "<group>"; };
 		1EF3E37A15BFDD0500B2A404 /* IIIAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IIIAsync.h; sourceTree = "<group>"; };
 		1EF3E37C15BFDD0500B2A404 /* IIIAsync.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IIIAsync.m; sourceTree = "<group>"; };
-		1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IIIAsyncTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IIIAsyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF3E38615BFDD0500B2A404 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1EF3E38E15BFDD0500B2A404 /* IIIAsyncTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IIIAsyncTests-Info.plist"; sourceTree = "<group>"; };
 		1EF3E39015BFDD0500B2A404 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EF3E38515BFDD0500B2A404 /* SenTestingKit.framework in Frameworks */,
 				1EF3E38715BFDD0500B2A404 /* UIKit.framework in Frameworks */,
 				1EF3E38815BFDD0500B2A404 /* Foundation.framework in Frameworks */,
 				1EF3E38B15BFDD0500B2A404 /* libIIIAsync.a in Frameworks */,
@@ -97,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				1EF3E37215BFDD0500B2A404 /* libIIIAsync.a */,
-				1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.octest */,
+				1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				1EF3E37515BFDD0500B2A404 /* Foundation.framework */,
-				1EF3E38415BFDD0500B2A404 /* SenTestingKit.framework */,
 				1EF3E38615BFDD0500B2A404 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -176,7 +172,6 @@
 				1EF3E37E15BFDD0500B2A404 /* Sources */,
 				1EF3E37F15BFDD0500B2A404 /* Frameworks */,
 				1EF3E38015BFDD0500B2A404 /* Resources */,
-				1EF3E38115BFDD0500B2A404 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -185,8 +180,8 @@
 			);
 			name = IIIAsyncTests;
 			productName = ConcurrentlyTests;
-			productReference = 1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 1EF3E38315BFDD0500B2A404 /* IIIAsyncTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,7 +189,8 @@
 		1EF3E36915BFDD0500B2A404 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Mustacheware;
 			};
 			buildConfigurationList = 1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "IIIAsync" */;
@@ -225,22 +221,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1EF3E38115BFDD0500B2A404 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1EF3E36E15BFDD0500B2A404 /* Sources */ = {
@@ -289,6 +269,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -301,6 +282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -351,14 +333,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				INFOPLIST_FILE = "IIIAsyncTests/IIIAsyncTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IIIAsyncTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -366,14 +348,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				INFOPLIST_FILE = "IIIAsyncTests/IIIAsyncTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IIIAsyncTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
