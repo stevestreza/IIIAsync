@@ -91,7 +91,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		NSString *source = [items objectAtIndex:index];
 		NSString *dest = [response objectAtIndex:index];
 		
-		XCTAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
+		XCTAssertEqualObjects([source uppercaseString], dest, @"String %lu is not equal: %@ vs %@",(unsigned long)index, source, dest);
 	}
 }
 
@@ -115,7 +115,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		NSString *source = [items objectAtIndex:index];
 		NSString *dest = [response objectAtIndex:index];
 		
-		XCTAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
+		XCTAssertEqualObjects([source uppercaseString], dest, @"String %lu is not equal: %@ vs %@",(unsigned long)index, source, dest);
 	}
 }
 
@@ -213,9 +213,9 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		++count;
 		callback(nil, nil);
 	} withCompletionHandler:^(id result, NSError *error) {
-		NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
-		NSAssert(count == 9999, @"Run count is not 9999: %i", count);
-		NSLog(@"runWhileTrue count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
+		NSAssert(remaining == 0, @"Remaining count is not 0: %li", (long)remaining);
+		NSAssert(count == 9999, @"Run count is not 9999: %li", (long)count);
+		NSLog(@"runWhileTrue count %li in %g seconds", (long)count, [[NSDate date] timeIntervalSinceDate:startDate]);
 		[self trigger];
 	}];
 }
@@ -232,9 +232,9 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		++count;
 		callback(nil, nil);
 	} withCompletionHandler:^(id result, NSError *error) {
-		NSAssert(remaining == 0, @"Remaining count is not 0: %i", remaining);
-		NSAssert(count == 9999, @"Run count is not 9999: %i", count);
-		NSLog(@"runWhileFalse count %i in %g seconds", count, [[NSDate date] timeIntervalSinceDate:startDate]);
+		NSAssert(remaining == 0, @"Remaining count is not 0: %li", (long)remaining);
+		NSAssert(count == 9999, @"Run count is not 9999: %li", (long)count);
+		NSLog(@"runWhileFalse count %li in %g seconds", (long)count, [[NSDate date] timeIntervalSinceDate:startDate]);
 		[self trigger];
 	}];
 	
