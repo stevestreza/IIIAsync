@@ -172,7 +172,6 @@
 				1EF3E37E15BFDD0500B2A404 /* Sources */,
 				1EF3E37F15BFDD0500B2A404 /* Frameworks */,
 				1EF3E38015BFDD0500B2A404 /* Resources */,
-				1EF3E38115BFDD0500B2A404 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -191,7 +190,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0720;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Mustacheware;
 			};
 			buildConfigurationList = 1EF3E36C15BFDD0500B2A404 /* Build configuration list for PBXProject "IIIAsync" */;
@@ -222,22 +221,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1EF3E38115BFDD0500B2A404 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1EF3E36E15BFDD0500B2A404 /* Sources */ = {
@@ -286,6 +269,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -298,6 +282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -348,13 +333,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				INFOPLIST_FILE = "IIIAsyncTests/IIIAsyncTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IIIAsyncTests;
 			};
 			name = Debug;
@@ -363,13 +348,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IIIAsync/IIIAsync-Prefix.pch";
 				INFOPLIST_FILE = "IIIAsyncTests/IIIAsyncTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IIIAsyncTests;
 			};
 			name = Release;
