@@ -189,12 +189,15 @@
 }
 
 -(void)runConditional:(IIIAsyncConditional)condition whileConditionalIs:(BOOL)whileValue performTask:(IIIAsyncTask)task callback:(IIIAsyncTaskCompletionHandler)callback{
-	dispatch_block_t __block nextStep = ^{
+    dispatch_block_t nextStep;
+    __block dispatch_block_t recurse_nextStep;
+    
+	recurse_nextStep = nextStep = ^{
 		dispatch_async(dispatchQueue, ^{
 			BOOL result = condition();
 			if(result == whileValue){
 				task(^(id result, NSError *error){
-					nextStep();
+					recurse_nextStep();
 				});
 			}else{
 				callback(nil, nil);
