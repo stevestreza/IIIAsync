@@ -91,7 +91,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		NSString *source = [items objectAtIndex:index];
 		NSString *dest = [response objectAtIndex:index];
 		
-		STAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
+		XCTAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
 	}
 }
 
@@ -115,17 +115,17 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		NSString *source = [items objectAtIndex:index];
 		NSString *dest = [response objectAtIndex:index];
 		
-		STAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
+		XCTAssertEqualObjects([source uppercaseString], dest, @"String %i is not equal: %@ vs %@",index, source, dest);
 	}
 }
 
 #define ASSERT_STATE(ds1, de1, ds2, de2, ds3, de3) do{\
-	STAssertEquals(didStart1, ds1, @"Start 1 is wrong"); \
-	STAssertEquals(didStart2, ds2, @"Start 2 is wrong"); \
-	STAssertEquals(didStart3, ds3, @"Start 3 is wrong"); \
-	STAssertEquals(didEnd1, de1, @"End 1 is wrong"); \
-	STAssertEquals(didEnd2, de2, @"End 2 is wrong"); \
-	STAssertEquals(didEnd3, de3, @"End 3 is wrong"); \
+	XCTAssertEqual(didStart1, ds1, @"Start 1 is wrong"); \
+	XCTAssertEqual(didStart2, ds2, @"Start 2 is wrong"); \
+	XCTAssertEqual(didStart3, ds3, @"Start 3 is wrong"); \
+	XCTAssertEqual(didEnd1, de1, @"End 1 is wrong"); \
+	XCTAssertEqual(didEnd2, de2, @"End 2 is wrong"); \
+	XCTAssertEqual(didEnd3, de3, @"End 3 is wrong"); \
 }while(0)
 
 -(void)testParallelMainThread{
@@ -134,7 +134,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 	
 	IIIAsync *async = [IIIAsync mainThreadAsync];
 	[async runTasksInSeries:@[^(IIIAsyncTaskCompletionHandler callback){
-		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		XCTAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(NO, NO, NO, NO, NO, NO);
 		didStart1 = YES;
 		ASSERT_STATE(YES, NO, NO, NO, NO, NO);
@@ -142,7 +142,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		callback(nil, nil);
 	}, ^(IIIAsyncTaskCompletionHandler callback){
-		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		XCTAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		didStart2 = YES;
 		ASSERT_STATE(YES, YES, YES, NO, NO, NO);
@@ -150,7 +150,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		callback(nil, nil);
 	}, ^(IIIAsyncTaskCompletionHandler callback){
-		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		XCTAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		didStart3 = YES;
 		ASSERT_STATE(YES, YES, YES, YES, YES, NO);
@@ -158,7 +158,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		callback(nil, nil);
 	}] withCompletionHandler:^(id result, NSError *error) {
-		STAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
+		XCTAssertTrue([[NSThread currentThread] isMainThread], @"Not main thread");
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		[self trigger];
 	}];
@@ -171,7 +171,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 	
 	IIIAsync *async = [IIIAsync backgroundThreadAsync];
 	[async runTasksInSeries:@[^(IIIAsyncTaskCompletionHandler callback){
-		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		XCTAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(NO, NO, NO, NO, NO, NO);
 		didStart1 = YES;
 		ASSERT_STATE(YES, NO, NO, NO, NO, NO);
@@ -179,7 +179,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		callback(nil, nil);
 	}, ^(IIIAsyncTaskCompletionHandler callback){
-		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		XCTAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(YES, YES, NO, NO, NO, NO);
 		didStart2 = YES;
 		ASSERT_STATE(YES, YES, YES, NO, NO, NO);
@@ -187,7 +187,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		callback(nil, nil);
 	}, ^(IIIAsyncTaskCompletionHandler callback){
-		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		XCTAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(YES, YES, YES, YES, NO, NO);
 		didStart3 = YES;
 		ASSERT_STATE(YES, YES, YES, YES, YES, NO);
@@ -195,7 +195,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		callback(nil, nil);
 	}] withCompletionHandler:^(id result, NSError *error) {
-		STAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
+		XCTAssertFalse([[NSThread currentThread] isMainThread], @"On main thread");
 		ASSERT_STATE(YES, YES, YES, YES, YES, YES);
 		[self trigger];
 	}];
@@ -256,7 +256,7 @@ static const NSTimeInterval DEBOUNCE_TIME = 2.0;
 	
 	[self waitForTrigger];
 	
-	STAssertTrue(completionHandlerCallCount == 1, @"completionHandler should only be called once");
+	XCTAssertTrue(completionHandlerCallCount == 1, @"completionHandler should only be called once");
 }
 
 @end

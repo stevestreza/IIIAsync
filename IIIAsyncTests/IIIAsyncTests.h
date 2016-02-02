@@ -24,8 +24,8 @@
 //  DEALINGS IN THE SOFTWARE.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface IIIAsyncTests : SenTestCase
+@interface IIIAsyncTests : XCTestCase
 
 @end
